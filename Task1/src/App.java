@@ -18,7 +18,7 @@ public class App {
          **/
 
         // Definitions
-        File myObj = new File("Input.txt");
+        File myObj = new File("Task1/src/Input.txt");
         Scanner myReader = new Scanner(myObj);
         ArrayList<String> CardList = new ArrayList<>();
 
@@ -32,6 +32,10 @@ public class App {
             if (newString.length() == 16) {
                 CardList.add(newString);
                 validate(newString);
+
+            } else {
+                System.out.println("error card length is incorrect");
+                System.out.println("card length" + newString.length());
             }
 
         }
@@ -59,6 +63,7 @@ public class App {
             EvenSum += CurrentDigit;
         }
         CardValid = (OddSum == EvenSum);
+        System.out.println(OddSum + EvenSum);
         System.out.println("Card Number: " + CardNo);
         System.out.println("Valid: " + CardValid);
         return false;
