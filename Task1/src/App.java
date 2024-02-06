@@ -49,12 +49,12 @@ public class App {
         int EvenSum = 0;
         Boolean CardValid;// ?
 
-        for (int digit = 0; digit < CardNo.length(); digit += 2) {
-            OddSum += Character.getNumericValue(CardNo.charAt(digit));
+        for (int digit = 0; digit < Reversed.length(); digit += 2) {
+            OddSum += Character.getNumericValue(Reversed.charAt(digit));
         }
 
         for (int digit = 1; digit < CardNo.length(); digit += 2) {
-            int CurrentDigit = CardNo.charAt(digit);
+            int CurrentDigit =Reversed.charAt(digit);
             int Doubled = CurrentDigit * 2;
             if (Doubled >= 10) {
                 int ones = Doubled % 10;
