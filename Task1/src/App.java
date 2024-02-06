@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.security.DigestInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.lang.Math;
 
 public class App {
 
@@ -30,8 +31,9 @@ public class App {
             String newString = myReader.nextLine();
             if (newString.length() == 16) {
                 CardList.add(newString);
-
+                validate(newString);
             }
+
         }
 
     }
@@ -40,7 +42,8 @@ public class App {
         String Reversed = revesString(CardNo);
 
         int OddSum = 0;
-        int sum2 = 0;
+        int EvenSum = 0;
+        Boolean CardValid;// ?
 
         for (int digit = 0; digit < CardNo.length(); digit += 2) {
             OddSum += Character.getNumericValue(CardNo.charAt(digit));
@@ -50,10 +53,14 @@ public class App {
             int CurrentDigit = CardNo.charAt(digit);
             int Doubled = CurrentDigit * 2;
             if (Doubled >= 10) {
-                Doubled %10
+                int ones = Doubled % 10;
+                CurrentDigit = ((int) Doubled / 10) + (ones);
             }
-            sum2 += Character.getNumericValue(CardNo.charAt(digit));
+            EvenSum += CurrentDigit;
         }
+        CardValid = (OddSum == EvenSum);
+        System.out.println("Card Number: " + CardNo);
+        System.out.println("Valid: " + CardValid);
         return false;
     }
 
