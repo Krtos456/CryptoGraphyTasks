@@ -18,14 +18,10 @@ public class App {
          **/
 
         // Definitions
-        File myObj = new File("Task1/src/Input.txt");
+        System.out.println(System.getProperty("user.dir"));
+        File myObj = new File("Input.txt");
         Scanner myReader = new Scanner(myObj);
         ArrayList<String> CardList = new ArrayList<>();
-
-        // testing
-        /*
-         * System.out.println(revesString("doubtfire"));
-         */
 
         while (myReader.hasNextLine()) {
             String newString = myReader.nextLine();
@@ -49,21 +45,25 @@ public class App {
         int EvenSum = 0;
         Boolean CardValid;// ?
 
+        System.out.println("Oddsum numbers ");
         for (int digit = 0; digit < Reversed.length(); digit += 2) {
             OddSum += Character.getNumericValue(Reversed.charAt(digit));
         }
 
         for (int digit = 1; digit < CardNo.length(); digit += 2) {
-            int CurrentDigit =Reversed.charAt(digit);
+            int CurrentDigit = Reversed.charAt(digit) - '0';
             int Doubled = CurrentDigit * 2;
+
+            CurrentDigit = Doubled;
             if (Doubled >= 10) {
-                int ones = Doubled % 10;
-                CurrentDigit = ((int) Doubled / 10) + (ones);
+                CurrentDigit = (Doubled % 10) + ((int) (Doubled / 10));
             }
             EvenSum += CurrentDigit;
         }
-        CardValid = (OddSum == EvenSum);
-        System.out.println(OddSum + EvenSum);
+        System.out.println("");
+
+        CardValid = ((OddSum + EvenSum) % 10) == 0;
+
         System.out.println("Card Number: " + CardNo);
         System.out.println("Valid: " + CardValid);
         return false;
